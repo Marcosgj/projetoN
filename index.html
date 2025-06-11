@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Algo especial para você 💕</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      height: 150px;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 1;
+    }
+
+    .btn-sim {
+      background-color: #e91e63;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .btn-nao {
+      background-color: #ccc;
+      color: #333;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oi, branquinha 💖</h1>
+  <p>
+    Desde que você entrou na minha vida, tudo ficou mais bonito. <br />
+    Seus sorrisos, suas palavras e seu jeito único me fazem querer estar ao seu lado sempre.
+  </p>
+  <h2>Quer namorar comigo? </h2>
+  <div class="button-container" id="btnContainer">
+    <button class="btn-sim" onclick="alert('Siiiiiim! 🥰 Eu te amo!')">Sim</button>
+    <button class="btn-nao" id="btnNao">Não</button>
+  </div>
+
+  <script>
+    const btnNao = document.getElementById("btnNao");
+    const container = document.getElementById("btnContainer");
+
+    function moverBotao() {
+      const containerRect = container.getBoundingClientRect();
+      const btnWidth = btnNao.offsetWidth;
+      const btnHeight = btnNao.offsetHeight;
+
+      const maxX = container.clientWidth - btnWidth;
+      const maxY = container.clientHeight - btnHeight;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      btnNao.style.left = `${randomX}px`;
+      btnNao.style.top = `${randomY}px`;
+    }
+
+    // Funciona com mouse
+    btnNao.addEventListener("mouseover", moverBotao);
+
+    // Funciona com toque (mobile)
+    btnNao.addEventListener("touchstart", function(e) {
+      e.preventDefault(); // evita clique acidental
+      moverBotao();
+    });
+  </script>
+</body>
+</html>
