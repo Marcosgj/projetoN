@@ -9,11 +9,6 @@
       box-sizing: border-box;
     }
 
-    <audio autoplay loop>
-  <source src="musica.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
-
     body {
       background-color: #fff0f5;
       font-family: 'Arial', sans-serif;
@@ -80,7 +75,14 @@
   </style>
 </head>
 <body>
-  <h1>Oi, branquinha 11 💖</h1>
+
+  <!-- Música de fundo -->
+  <audio autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <h1>Oi, branquinha 💖</h1>
   <p>
     Desde que você entrou na minha vida, tudo ficou mais bonito. <br />
     Seus sorrisos, suas palavras e seu jeito único me fazem querer estar ao seu lado sempre.
@@ -110,12 +112,10 @@
       btnNao.style.top = `${randomY}px`;
     }
 
-    // Funciona com mouse
     btnNao.addEventListener("mouseover", moverBotao);
 
-    // Funciona com toque (mobile)
     btnNao.addEventListener("touchstart", function(e) {
-      e.preventDefault(); // evita clique acidental
+      e.preventDefault();
       moverBotao();
     });
   </script>
