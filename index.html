@@ -18,6 +18,7 @@
       text-align: center;
       padding: 20px;
       margin: 0;
+      position: relative;
     }
 
     h1 {
@@ -71,17 +72,42 @@
     button:hover {
       opacity: 0.9;
     }
+
+    /* Tela de clique inicial */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255, 240, 245, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .overlay button {
+      font-size: 1.5rem;
+      padding: 16px 32px;
+      background-color: #e91e63;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <!-- Música de fundo -->
-  <audio id="musica" autoplay loop>
+  <audio id="musica" loop>
     <source src="musica.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
-  <button onclick="document.getElementById('musica').play()">Tocar música</button>
+  <!-- Tela de clique inicial -->
+  <div class="overlay" id="overlay">
+    <button onclick="iniciar()">Clique aqui</button>
+  </div>
 
   <h1>Oi, branquinha 💖</h1>
   <p>
@@ -95,6 +121,11 @@
   </div>
 
   <script>
+    function iniciar() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("musica").play();
+    }
+
     const btnNao = document.getElementById("btnNao");
     const container = document.getElementById("btnContainer");
 
@@ -114,7 +145,6 @@
     }
 
     btnNao.addEventListener("mouseover", moverBotao);
-
     btnNao.addEventListener("touchstart", function(e) {
       e.preventDefault();
       moverBotao();
