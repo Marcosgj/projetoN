@@ -76,13 +76,11 @@
 </head>
 <body>
 
-  <!-- Música de fundo -->
-  <audio autoplay loop>
-    <source src="musica.mp3" type="audio/mpeg">
+  <!-- Música de fundo, sem autoplay -->
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
-
-  <button onclick="document.getElementById('musica').play()">Tocar música</button>
 
   <h1>Oi, branquinha 💖</h1>
   <p>
@@ -91,16 +89,17 @@
   </p>
   <h2>Quer namorar comigo? </h2>
   <div class="button-container" id="btnContainer">
-    <button class="btn-sim" onclick="alert('🥰 Eu te amo!')">Sim</button>
+    <button class="btn-sim" id="btnSim">Sim</button>
     <button class="btn-nao" id="btnNao">Não</button>
   </div>
 
   <script>
     const btnNao = document.getElementById("btnNao");
+    const btnSim = document.getElementById("btnSim");
     const container = document.getElementById("btnContainer");
+    const audio = document.getElementById("musica");
 
     function moverBotao() {
-      const containerRect = container.getBoundingClientRect();
       const btnWidth = btnNao.offsetWidth;
       const btnHeight = btnNao.offsetHeight;
 
@@ -115,10 +114,14 @@
     }
 
     btnNao.addEventListener("mouseover", moverBotao);
-
     btnNao.addEventListener("touchstart", function(e) {
       e.preventDefault();
       moverBotao();
+    });
+
+    btnSim.addEventListener("click", () => {
+      audio.play();
+      alert('Siiiiiim! 🥰 Eu te amo!');
     });
   </script>
 </body>
